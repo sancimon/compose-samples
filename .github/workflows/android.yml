@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Set up JDK 11
@@ -23,10 +23,10 @@ jobs:
           distribution: 'temurin'
 
       - name: Build APK
-        run: ./gradlew :Jetsnack:assembleRelease
+        run: ./gradlew :Jetsnack:assembleDebug
 
-      - name: Upload APK as artifact
+      - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: Jetsnack-APK
-          path: Jetsnack/build/outputs/apk/release/*.apk
+          path: Jetsnack/build/outputs/apk/debug/*.apk
